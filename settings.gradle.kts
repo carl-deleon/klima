@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "klima"
 include(":app")
+include(":data")
+include(":domain")
