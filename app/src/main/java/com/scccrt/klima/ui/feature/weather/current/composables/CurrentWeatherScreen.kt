@@ -29,6 +29,7 @@ import coil.compose.AsyncImage
 import com.scccrt.klima.R
 import com.scccrt.klima.domain.model.CurrentWeather
 import com.scccrt.klima.ui.common.KlimaTopAppBar
+import com.scccrt.klima.ui.common.util.CountryUtil.asCountryName
 import com.scccrt.klima.ui.common.util.DateUtil.toFormattedDate
 import com.scccrt.klima.ui.common.util.DateUtil.toFormattedTime
 import com.scccrt.klima.ui.common.util.TempUtil.toCelcius
@@ -111,7 +112,7 @@ fun CurrentWeatherSuccessState(
             ) {
                 Text(
                     modifier = Modifier.padding(top = 12.dp),
-                    text = currentWeather.cityName,
+                    text = "${currentWeather.cityName}, ${currentWeather.system.countryCode.asCountryName()}",
                     style = MaterialTheme.typography.headlineMedium
                 )
                 Text(

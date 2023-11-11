@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 object DateUtil {
-    fun Long.toFormattedDate(dateFormat: String = "MMMM dd, yyyy"): String {
+    fun Long.toFormattedDate(dateFormat: String = "MMMM dd, yyyy - hh:mm a"): String {
         val outputDateFormat = SimpleDateFormat(dateFormat, Locale.getDefault())
         try {
             return outputDateFormat.format(this * 1000L)
