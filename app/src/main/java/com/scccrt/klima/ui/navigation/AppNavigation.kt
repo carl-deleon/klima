@@ -9,10 +9,12 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.scccrt.klima.ui.navigation.destination.CurrentWeatherDestination
+import com.scccrt.klima.ui.navigation.destination.WeatherForecastDestination
 
 @Composable
 fun AppNavigation() {
@@ -29,25 +31,33 @@ fun AppNavigation() {
                     BottomNavScreen.Forecast
                 ),
                 navigationItemSelected
-            ) { _, position ->
+            ) { navigationItem, position ->
                 navigationItemSelected = position
+
+                navController.navigate(navigationItem.route) {
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        saveState = true
+                    }
+                    launchSingleTop = true
+                    restoreState = true
+                }
             }
         }
     ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = Navigation.Routes.CURRENT,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
         ) {
             composable(
                 route = Navigation.Routes.CURRENT
             ) {
-                CurrentWeatherDestination(navController = navController)
+                CurrentWeatherDestination()
             }
             composable(
                 route = Navigation.Routes.FORECAST
             ) {
-                CurrentWeatherDestination(navController = navController)
+                WeatherForecastDestination()
             }
         }
     }

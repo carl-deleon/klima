@@ -40,6 +40,6 @@ class CurrentWeatherViewModel @Inject constructor(
 
 
     override fun handleEvents(event: CurrentWeatherContract.Event) {
-
+        // noop
     }
 }
