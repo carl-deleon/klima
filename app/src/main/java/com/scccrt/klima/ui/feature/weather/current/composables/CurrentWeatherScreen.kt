@@ -32,7 +32,6 @@ import com.scccrt.klima.ui.common.KlimaTopAppBar
 import com.scccrt.klima.ui.common.util.CountryUtil.asCountryName
 import com.scccrt.klima.ui.common.util.DateUtil.toFormattedDate
 import com.scccrt.klima.ui.common.util.DateUtil.toFormattedTime
-import com.scccrt.klima.ui.common.util.TempUtil.toCelcius
 import com.scccrt.klima.ui.feature.weather.current.CurrentWeatherContract
 import kotlinx.coroutines.flow.Flow
 
@@ -84,8 +83,8 @@ fun CurrentWeatherSuccessState(
         ),
         WeatherComponentPresentation(
             label = stringResource(id = R.string.feels_like),
-            value = currentWeather.main.feelsLike.toCelcius(),
-            unit = "°",
+            value = currentWeather.main.feelsLike.toString(),
+            unit = "°C",
             iconId = R.drawable.ic_temp
         ),
         WeatherComponentPresentation(
@@ -135,7 +134,7 @@ fun CurrentWeatherSuccessState(
                 Text(
                     text = stringResource(
                         R.string.temperature_value_in_celsius,
-                        currentWeather.main.temp.toCelcius()
+                        currentWeather.main.temp
                     ),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,

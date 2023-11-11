@@ -16,7 +16,7 @@ class CurrentWeatherViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             weatherRepository
-                .getWeather(14.67, 121.04)
+                .getWeather(14.6542974, 121.0244606)
                 .onSuccess {
                     setState {
                         copy(currentWeather = it, isLoading = false, isError = false, isEvening = false)

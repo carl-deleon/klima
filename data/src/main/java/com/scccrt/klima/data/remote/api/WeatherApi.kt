@@ -4,8 +4,15 @@ import com.scccrt.klima.data.remote.dto.WeatherResult
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+const val DEFAULT_UNIT = "metric"
+const val DEFAULT_COUNT = 20
+
 interface WeatherApi {
 
     @GET("weather")
-    suspend fun getWeather(@Query("lat") lat: String, @Query("lon") lon: String): WeatherResult
+    suspend fun getWeather(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("units") units: String = DEFAULT_UNIT
+    ): WeatherResult
 }
