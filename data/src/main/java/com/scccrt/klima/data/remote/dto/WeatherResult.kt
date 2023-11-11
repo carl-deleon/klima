@@ -42,6 +42,6 @@ data class MainDetails(
 data class System(
     val id: Int,
     val country: String,
-    val sunrise: String,
-    val sunset: String
+    val sunrise: Long,
+    val sunset: Long
 )

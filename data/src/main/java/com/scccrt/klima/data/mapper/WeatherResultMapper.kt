@@ -26,4 +26,9 @@ fun Weather.toWeatherCondition() = WeatherCondition(id, main, description, icon)
 
 fun MainDetails.toMain() = Main(temp, feelsLike, tempMin, tempMax, pressure, humidity)
 
-fun System.toWeatherSystem() = WeatherSystem(id, countryCode = country, sunriseDt = sunrise, sunsetDt = sunset)
+fun System.toWeatherSystem() = WeatherSystem(
+    id,
+    countryCode = country,
+    sunriseDt = sunrise,
+    sunsetDt = sunset
+)

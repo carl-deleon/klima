@@ -5,6 +5,7 @@ import com.scccrt.klima.domain.repository.WeatherRepository
 import com.scccrt.klima.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,7 +15,19 @@ class CurrentWeatherViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            
+            weatherRepository
+                .getWeather(14.67, 121.04)
+                .onSuccess {
+                    setState {
+                        copy(currentWeather = it, isLoading = false, isError = false, isEvening = false)
+                    }
+                }
+                .onFailure {
+                    Timber.e(it)
+                    setState {
+                        copy(isError = true)
+                    }
+                }
         }
     }
 

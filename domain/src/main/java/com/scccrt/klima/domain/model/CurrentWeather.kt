@@ -34,6 +34,6 @@ data class Main(
 data class WeatherSystem(
     val id: Int,
     val countryCode: String,
-    val sunriseDt: String,
-    val sunsetDt: String
+    val sunriseDt: Long,
+    val sunsetDt: Long
 )
