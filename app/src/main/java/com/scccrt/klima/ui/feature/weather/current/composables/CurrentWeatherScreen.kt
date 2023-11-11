@@ -34,6 +34,7 @@ import com.scccrt.klima.ui.common.util.DateUtil.toFormattedDate
 import com.scccrt.klima.ui.common.util.DateUtil.toFormattedTime
 import com.scccrt.klima.ui.feature.weather.current.CurrentWeatherContract
 import kotlinx.coroutines.flow.Flow
+import kotlin.math.roundToInt
 
 @Composable
 fun CurrentWeatherScreen(
@@ -77,13 +78,13 @@ fun CurrentWeatherSuccessState(
     val weatherComponents = listOf(
         WeatherComponentPresentation(
             label = stringResource(id = R.string.humidity),
-            value = currentWeather.main.humidity.toString(),
+            value = currentWeather.temperature.humidity.roundToInt().toString(),
             unit = "%",
             iconId = R.drawable.ic_humidity
         ),
         WeatherComponentPresentation(
             label = stringResource(id = R.string.feels_like),
-            value = currentWeather.main.feelsLike.toString(),
+            value = currentWeather.temperature.feelsLike.roundToInt().toString(),
             unit = "°C",
             iconId = R.drawable.ic_temp
         ),
@@ -134,7 +135,7 @@ fun CurrentWeatherSuccessState(
                 Text(
                     text = stringResource(
                         R.string.temperature_value_in_celsius,
-                        currentWeather.main.temp
+                        currentWeather.temperature.temp.roundToInt()
                     ),
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
@@ -148,6 +149,7 @@ fun CurrentWeatherSuccessState(
                 Spacer(Modifier.height(16.dp))
             }
         }
+
         items(weatherComponents) { weatherComponent ->
             WeatherComponent(weatherComponent = weatherComponent)
         }

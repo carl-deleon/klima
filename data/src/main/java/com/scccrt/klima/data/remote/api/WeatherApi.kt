@@ -1,5 +1,6 @@
 package com.scccrt.klima.data.remote.api
 
+import com.scccrt.klima.data.remote.dto.ForecastResult
 import com.scccrt.klima.data.remote.dto.WeatherResult
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,4 +16,12 @@ interface WeatherApi {
         @Query("lon") lon: String,
         @Query("units") units: String = DEFAULT_UNIT
     ): WeatherResult
+
+    @GET("forecast")
+    suspend fun getWeatherForecast(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String,
+        @Query("units") units: String = DEFAULT_UNIT,
+        @Query("cnt") count: Int = DEFAULT_COUNT
+    ): ForecastResult
 }

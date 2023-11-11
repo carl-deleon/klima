@@ -3,7 +3,7 @@ package com.scccrt.klima.domain.model
 data class CurrentWeather(
     val coordinates: Coordinates,
     val conditions: List<WeatherCondition>,
-    val main: Main,
+    val temperature: Temperature,
     val dt: Long,
     val system: WeatherSystem,
     val timezone: Long,
@@ -22,7 +22,7 @@ data class WeatherCondition(
     val icon: String
 )
 
-data class Main(
+data class Temperature(
     val temp: Double,
     val feelsLike: Double,
     val tempMin: Double,

@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class WeatherResult(
     @SerialName("coord") val coordinates: Coordinates,
-    @SerialName("weather") val weathers: List<Weather>,
-    val main: MainDetails,
+    @SerialName("weather") val weatherConditions: List<WeatherCondition>,
+    val main: WeatherTemperature,
     val dt: Long,
     val sys: System,
     val timezone: Long,
@@ -21,7 +21,7 @@ data class Coordinates(
 )
 
 @Serializable
-data class Weather(
+data class WeatherCondition(
     val id: Int,
     val main: String,
     val description: String,
@@ -29,7 +29,7 @@ data class Weather(
 )
 
 @Serializable
-data class MainDetails(
+data class WeatherTemperature(
     val temp: Double,
     @SerialName("feels_like") val feelsLike: Double,
     @SerialName("temp_min") val tempMin: Double,
