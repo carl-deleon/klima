@@ -11,7 +11,7 @@ class CurrentWeatherRepository(
     dispatcher: CoroutineDispatcher
 ) : CoroutineRepository(dispatcher), WeatherRepository {
 
-    override suspend fun getWeather(lat: Long, long: Long): Result<CurrentWeather> =
+    override suspend fun getWeather(lat: Double, long: Double): Result<CurrentWeather> =
         safeApiCall {
             api.getWeather(lat.toString(), long.toString()).toCurrentWeather()
         }
