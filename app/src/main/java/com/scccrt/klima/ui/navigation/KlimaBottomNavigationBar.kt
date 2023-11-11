@@ -1,11 +1,15 @@
 package com.scccrt.klima.ui.navigation
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun KlimaBottomNavigationBar(
@@ -22,7 +26,11 @@ fun KlimaBottomNavigationBar(
                 },
                 label = { Text(text = stringResource(id = bottomNavScreen.resourceId)) },
                 icon = {
-                    Icon(bottomNavScreen.icon, contentDescription = bottomNavScreen.route)
+                    Icon(
+                        painter = painterResource(id = bottomNavScreen.icon),
+                        contentDescription = bottomNavScreen.route,
+                        modifier = Modifier.size(24.dp)
+                    )
                 }
             )
         }
