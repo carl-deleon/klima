@@ -1,4 +1,4 @@
-package com.scccrt.klima.ui.common
+package com.scccrt.klima.ui.common.composable
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text

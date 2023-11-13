@@ -1,4 +1,4 @@
-package com.scccrt.klima.ui.feature.weather.forecast.composables
+package com.scccrt.klima.ui.feature.weather.forecast
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -8,14 +8,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.scccrt.klima.domain.model.ForecastCondition
-import com.scccrt.klima.ui.common.KlimaTopAppBar
-import com.scccrt.klima.ui.feature.weather.forecast.WeatherForecastContract
+import com.scccrt.klima.ui.common.composable.KlimaTopAppBar
+import com.scccrt.klima.ui.feature.weather.forecast.composables.WeatherForecastHeader
+import com.scccrt.klima.ui.feature.weather.forecast.composables.WeatherForecastItem
 import kotlinx.coroutines.flow.Flow
 
 @Composable
@@ -40,11 +40,11 @@ fun WeatherForecastScreen(
             when {
                 state.weatherForecast.isNotEmpty() -> WeatherForecastSuccessState(state.weatherForecast)
                 state.isError -> {
-
+                    // TODO error state
                 }
 
                 state.isLoading -> {
-
+                    // TODO optional loading state
                 }
             }
         }

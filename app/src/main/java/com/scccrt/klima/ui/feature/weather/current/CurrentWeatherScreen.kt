@@ -1,4 +1,4 @@
-package com.scccrt.klima.ui.feature.weather.current.composables
+package com.scccrt.klima.ui.feature.weather.current
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +17,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,12 +29,16 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.scccrt.klima.R
 import com.scccrt.klima.domain.model.CurrentWeather
-import com.scccrt.klima.ui.common.KlimaTopAppBar
+import com.scccrt.klima.ui.base.SIDE_EFFECTS_KEY
+import com.scccrt.klima.ui.common.composable.KlimaTopAppBar
 import com.scccrt.klima.ui.common.util.CountryUtil.asCountryName
 import com.scccrt.klima.ui.common.util.DateUtil.toFormattedDate
 import com.scccrt.klima.ui.common.util.DateUtil.toFormattedTime
-import com.scccrt.klima.ui.feature.weather.current.CurrentWeatherContract
+import com.scccrt.klima.ui.feature.weather.current.composables.WeatherComponent
+import com.scccrt.klima.ui.feature.weather.current.composables.WeatherComponentPresentation
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import kotlin.math.roundToInt
 
 @Composable
@@ -42,6 +47,15 @@ fun CurrentWeatherScreen(
     effectFlow: Flow<CurrentWeatherContract.Effect>?,
     onEventSent: (event: CurrentWeatherContract.Event) -> Unit
 ) {
+    LaunchedEffect(SIDE_EFFECTS_KEY) {
+        effectFlow?.onEach { effect ->
+            when (effect) {
+                CurrentWeatherContract.Effect.LocationDisabled -> {
+                    // TODO Show location settings dialog here
+                }
+            }
+        }?.collect()
+    }
 
     val snackBarHostState = remember { SnackbarHostState() }
 
@@ -59,11 +73,11 @@ fun CurrentWeatherScreen(
                 state.currentWeather != null -> CurrentWeatherSuccessState(currentWeather = state.currentWeather)
 
                 state.isError -> {
-
+                    // TODO error state
                 }
 
                 state.isLoading -> {
-
+                    // TODO optional loading state
                 }
             }
         }

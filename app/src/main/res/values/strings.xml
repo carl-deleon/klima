@@ -9,4 +9,14 @@
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
     <string name="temperature_value_in_celsius">%1$s°C</string>
+    <string name="required_for_weather">%1$s required for the Klima</string>
+    <string name="app_settings">App settings</string>
+    <string name="android_permission">android.permission.</string>
+    <string name="location_permission_header">Get Weather Forecasts, Wherever You Are</string>
+    <string name="location_permission_reason">Enable location services to receive accurate weather forecasts. You can change permissions at any time.</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="request_permissions">Request Permissions</string>
+    <string name="permissions_required_title">Permissions</string>
+    <string name="permissions_required_message">Klima requires the following permissions:\n%1$s</string>
+    <string name="label_continue">Continue</string>
 </resources>
